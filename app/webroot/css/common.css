@@ -1,0 +1,260 @@
+/* normalize the font */
+body, h1, h2, input, a, textarea, select {
+	font-size:16px;
+	margin:0;
+	color:black;
+	font-family:Arial, Sans;
+	text-decoration:none;
+}
+a:hover {
+	text-decoration:underline;
+	cursor:pointer;
+}
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 { margin:0; text-align:center; }
+h1, .h1 { font-size:1.2em; font-weight:bold; }
+h2, .h2 { font-size:1.2em; font-weight:bold; }
+h3, .h3 { font-size:1.1em; font-weight:bold; }
+h4, .h4 { font-size:1em; }
+h5, .h5 { font-size:1em; }
+
+body div div.page_section ul {
+	padding:0; margin:0;
+	border:none;
+}
+body div div.page_section ul+ul {
+	margin-top:1em;
+}
+body div div.page_section li {
+	padding:0; margin:0;
+	list-style-type:none;
+	border:none;
+}
+body div div.page_section ul li * { display:block; }
+body div div.page_section ul li p a { display:inline; }
+body div div.page_section ul li > * {
+	padding:.25em .5em .25em .5em;
+}
+
+.right { /* aligns to the right of the container */
+	float:right;
+	display:inline;
+}
+.left { /* aligns to the left of the container */
+	float:left;
+	display:inline;
+}
+.hasFloaters:after { /* will clear the background when children are floated*/
+	clear:both;
+	display:block;
+	height:0;
+	visibility:hidden;
+	content:'.';
+}
+.right + .left + span,
+.left + .right + span { /* useful for making something centered between two floated elements */
+	text-align:center;
+}
+
+body div div.page_section ul li img {
+	display:inline;
+	border:none;
+	vertical-align:middle;
+	margin-right:.25em;
+	text-decoration:none;
+}
+
+/* borders for page sections (each major navigation block is a page section) */
+.page_section {
+	padding: .5em .5em .5em .5em;
+	margin:0;
+}
+
+/* absolute positioning puts the nav on the left (nav_width+nav_padding fills this) */
+#leftNav {
+	position:absolute;
+	left:1em;
+	top:1em;
+	width:13em;
+}
+
+/* absolute positioning spaces the body away from the nav (fills width) */
+#bodyContent {
+	position:absolute;
+	left:14em;
+	top:1em;
+	width:25em;
+}
+#body {
+	margin:1em 1em 0 14em;
+}
+#console pre {
+	font-size:.825em;
+	border:1px solid black;
+}
+
+
+
+.ll_navigation ul,
+.ll_navigation li { 
+	border:none;
+	background:white;
+}
+.ll_navigation h1 {
+	background:#5598D7; /* a darkish blue */
+	color:white;
+	padding:.25em .5em .25em .5em;
+}
+.ll_navigation li a {
+	border-top:1px solid transparent;
+	border-bottom:1px solid transparent;
+}
+.ll_navigation li.selected a {
+	background:#CBE0F2; /* a light blue */
+	border-top:1px solid #5598D7;
+	border-bottom:1px solid #5598D7;
+}
+.ll_navigation li a:hover { /* applied after [name='selected'] */
+	background:#F5F6BE; /* firefox security beige */
+	color:black;
+	opacity:1;
+	border-top:1px solid #5598D7;
+	border-bottom:1px solid #5598D7;
+}
+
+.ll_contentlist ul { background:white; }
+.ll_contentlist h1 { background:#5598D7; /* a darkish blue */ color:white; }
+.ll_contentlist h2 { }
+.ll_contentlist h3 { background:#F5F6BE; /* firefox security beige */ border-top:1px solid #5598D7; text-align:left; }
+.ll_contentlist h4 { background:#F5F6BE; }
+.ll_contentlist h5 { border-top:1px solid #CBE0F2; }
+
+
+
+
+
+/* styling for the input/output controls ??? */
+.input, .output {
+	background:#F5F6BE; /* firefox security beige */
+}
+
+.input:hover,
+.input:focus,
+.input:active {
+	background:#80FF80; /* a whiteish green */
+
+}
+
+.input > * {
+	border:1px solid transparent;
+}
+.input >*:hover {
+	border:1px solid #5598D7;
+}
+
+.output > * a {
+	text-decoration:none;
+	padding:.2em;
+}
+.output > * a:hover {
+	text-decoration:underline;
+	background:#80FF80;
+}
+.error > * {
+	color:red;
+	background:#F5F6BE; /* firefox security beige */
+	font-weight:bold;
+	text-decoration:underline;
+	text-align:center;
+}
+
+/* formats for the input controls (textboxes, submit buttons)*/
+input, textarea, select {
+	border:none;
+	width:95%;
+	background:transparent;
+	margin:auto;
+
+	font-weight:normal;
+	border:1px solid transparent;
+}
+select {
+	width:100%;
+}
+input[type="submit"] {
+	text-align:center;
+	cursor:pointer;
+	width:100%;
+}
+input[type="submit"]:hover {
+	text-decoration:underline;
+}
+#returnValue input[type="submit"] {
+	width:50%;
+	display:inline;
+}
+
+/*
+.input_good, .output_good {
+	background:#80FF80;
+}
+.input_bad, .output_bad {
+	background:#F97777;
+}
+*/
+
+
+
+.altrow {
+	background:#F5F6BE;
+}
+
+
+
+.ac_results {
+	padding: 0px;
+	border: 1px solid black;
+	background-color: white;
+	overflow: hidden;
+	z-index: 99999;
+}
+
+.ac_results ul {
+	width: 100%;
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.ac_results li {
+	margin: 0px;
+	padding: 2px 5px;
+	cursor: default;
+	display: block;
+	/* 
+	if width will be 100% horizontal scrollbar will apear 
+	when scroll mode will be used
+	*/
+	/*width: 100%;*/
+	font: menu;
+	font-size: 12px;
+	/* 
+	it is very important, if line-height not setted or setted 
+	in relative units scroll will be broken in firefox
+	*/
+	line-height: 16px;
+	overflow: hidden;
+}
+
+.ac_loading {
+	background: white url('indicator.gif') right center no-repeat;
+}
+
+.ac_odd {
+	background-color: #eee;
+}
+
+.ac_over {
+	background-color: #0A246A;
+	color: white;
+}
