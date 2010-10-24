@@ -3,11 +3,11 @@
 <head>
 	<meta charset=utf-8 />
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-   	
-   <title>Beer Price Calculator</title>
-   	
+
+	<title>Beer Price Calculator</title>
+
 	<?php echo $html->css('common'); ?>
-	
+
 	<script type="text/javascript">
 		var _webDirectory = '<?php echo Dispatcher::baseUrl() ?>';
 	</script>
@@ -36,9 +36,9 @@
   _gaq.push(['_trackPageview']);
 
   (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 
 </script>

@@ -26,31 +26,37 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/views/pages/home.ctp)...
  */
- 
- 	Router::parseExtensions('json');
- 
-	Router::connect('/', 
+
+
+	Router::parseExtensions('json', 'jqt');
+/*
+	Router::connect('/',
 		array('controller' => 'pages', 'action' => 'display', 'calculator')
 	);
 	Router::connect('/about',
 		array('controller' => 'pages', 'action' => 'display', 'about')
 	);
-	Router::connect('/calc', 
+	Router::connect('/calc',
 		array('controller' => 'pages', 'action' => 'display', 'calculator')
 	);
-	
+
 	Router::connect('/home',
 		array('controller' => 'brands', 'action'=>'index')
 	);
-	
-	Router::connect('/beers/:slug', 
+
+	Router::connect('/beers/:slug',
 		array('controller' => 'pages', 'action' => 'display', 'browser'),
 		array('pass'=>'slug')
 	);
+*/
+
+Router::connect('/',
+	array('controller' => 'mobile', 'action' => 'home')
+);
 
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
-	Router::connect('/pages/*', 
+	Router::connect('/pages/*',
 		array('controller' => 'pages', 'action' => 'display')
 	);

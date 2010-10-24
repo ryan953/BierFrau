@@ -19,3 +19,4 @@
 2010-08-30 20:31:11 Notice: Notice (8): Undefined index:  container_id in [/Users/ryan953/Sites/bierfrau.com/app/views/brands/index.ctp, line 26]
 2010-08-31 08:30:52 Notice: Notice (8): Undefined index:  container_id in [/Users/ryan953/Sites/bierfrau.com/app/views/brands/index.ctp, line 26]
 2010-09-26 15:32:04 Debug: Notice (8): Undefined index: container_id in [C:\Users\Ryan Albrecht\Sites\bierfrau.com\app\views\brands\index.ctp, line 26]
+2010-10-23 23:46:31 Debug: Notice (8): Undefined property: BrewersController::$Brewers in [C:\Users\Ryan Albrecht\Sites\bierfrau.com\app\controllers\brewers_controller.php, line 11]
