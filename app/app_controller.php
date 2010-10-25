@@ -7,8 +7,7 @@ class AppController extends Controller {
 
 		App::import('Sanitize');
 
-		$this->RequestHandler->setContent('jqt', 'application/json');
-
+		$this->RequestHandler->setContent('jqt', 'text/html');
 
 		//Load our custom config file
 		//Configure::load('calendar');

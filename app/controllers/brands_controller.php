@@ -4,33 +4,22 @@ class BrandsController extends AppController {
 	var $scaffold = 'admin';
 
 	function index() {
-		if ($this->RequestHandler->responseType() == 'json') {
-			$this->set('brands',
-				$this->Brand->find('all',
-					array('contain'=>false, 'order'=>'name ASC')
-				)
-			);
-		} else {
-			$this->set('brands', $this->Brand->find('all', array(
-				'contain'=>array(
-					'Type',
-					'Brewer',
-					'Price'
-				),
-				'limit'=>10
-			) ) );
-
-			/*
-			'Price'=>array(
-				'Package'=>array(
-					'Container'
-				),
-				'Location'
+		$this->set('brands',
+			$this->Brand->find('all',
+				array('contain'=>false, 'order'=>'name ASC')
 			)
-			*/
-			$this->set('packages', $this->Brand->Price->Package->find('all'));
-			$this->set('locations', $this->Brand->Price->Location->find('all'));
-		}
+		);
+	}
+
+	function view($id) {
+		$this->set('brand',
+			$this->Brand->find('first',
+				array(
+					'contain'=>array('Price'=>array('Package'=>array('Container'), 'Location'), 'Brewer'),
+					'conditions'=>array('Brand.id'=>$id)
+				)
+			)
+		);
 	}
 
 
