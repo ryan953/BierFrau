@@ -30,9 +30,9 @@
 	<ul class="rounded">
 		<?php foreach($brand['Price'] as $price) { ?>
 			<li>
-				<small>$<?php echo number_format($price['price_per_litre'], 2) ?>/litre</small>
+				<small>$<?php echo number_format($price['amount'], 2) ?></small>
 				<span class="name"><?php echo $price['Package']['name'] ?></span>
-				<span class="val">$<?php echo number_format($price['amount'], 2) ?></span>
+				<span class="val">$<?php echo number_format($price['price_per_litre'], 2) ?>/litre</span>
 			</li>
 		<?php } ?>
 
@@ -44,8 +44,17 @@
 		<!-- ['Price'][0-n]['Location']['name']-->
 		<!-- ['Price'][0-n]['timestamp'] -->
 	</ul>
-</div>
 
-<?php
-pr($brand);
-?>
+	<div class="info">
+		<p>
+		Most containers over 630mL carry a $0.20 deposit;<br/>
+		those under 630mL carry a $0.10 deposit;<br/>
+		aluminum and steel cans over 1L carry a $0.20 deposit;<br/>
+		those 1L and under carry a $0.10 deposit.
+		<!--
+		http://www.bagitback.ca/bagitback/en/residential/faq.shtml
+		http://www.thebeerstore.ca/storesandproducts-kegs.html
+		-->
+		</p>
+	</div>
+</div>

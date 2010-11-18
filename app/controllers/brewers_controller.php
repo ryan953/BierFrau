@@ -14,5 +14,18 @@ class BrewersController extends AppController {
 			)
 		);
 	}
+
+	function view($id) {
+		$this->set('brewer',
+			$this->Brewer->find('first',
+				array(
+					'contain'=>array(
+						'Brand'=>array('Type'),
+					),
+					'conditions'=>array('Brewer.id'=>$id)
+				)
+			)
+		);
+	}
 }
 ?>

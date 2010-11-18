@@ -96,3 +96,5 @@
 2010-10-24 23:11:57 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at C:\Users\Ryan Albrecht\Sites\bierfrau.com\cake\basics.php:355) in [C:\Users\Ryan Albrecht\Sites\bierfrau.com\app\views\layouts\jqt\default.ctp, line 4]
 2010-10-24 23:13:45 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at C:\Users\Ryan Albrecht\Sites\bierfrau.com\cake\basics.php:355) in [C:\Users\Ryan Albrecht\Sites\bierfrau.com\app\views\layouts\jqt\default.ctp, line 3]
 2010-10-24 23:13:45 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at C:\Users\Ryan Albrecht\Sites\bierfrau.com\cake\basics.php:355) in [C:\Users\Ryan Albrecht\Sites\bierfrau.com\app\views\layouts\jqt\default.ctp, line 4]
+2010-11-17 20:49:33 Warning: Warning (2): Invalid argument supplied for foreach() in [/Users/ryan953/Sites/bierfrau.com/app/views/brewers/view.ctp, line 31]
+2010-11-17 20:49:52 Warning: Warning (2): Invalid argument supplied for foreach() in [/Users/ryan953/Sites/bierfrau.com/app/views/brewers/view.ctp, line 35]
