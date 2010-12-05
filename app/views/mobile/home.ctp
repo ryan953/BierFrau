@@ -8,7 +8,8 @@
 	<ul class="rounded">
 		<!--<li class="arrow"><a href="/brewers">Brewers</a> <small class="counter">4</small></li>-->
 
-		<li class="arrow"><a href="/brands.jqt">Brand Names</a></li>
+		<li class="arrow"><a href="/brands/top10.jqt">Top 10 Brands</a></li>
+		<li class="arrow"><a href="/brands.jqt">All Brand Names</a></li>
 		<li class="arrow"><a href="/brewers.jqt">Brewers</a></li>
 
 		<!--<li class="arrow"><a href="/brands/view/4.jqt">Antigravity</a></li>-->

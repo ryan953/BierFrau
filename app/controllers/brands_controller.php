@@ -11,6 +11,12 @@ class BrandsController extends AppController {
 		);
 	}
 
+	function top10() {
+		$this->set('brands',
+			$this->Brand->findTop10()
+		);
+	}
+
 	function view($id) {
 		$this->set('brand',
 			$this->Brand->find('first',
