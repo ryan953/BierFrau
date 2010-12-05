@@ -1,7 +1,8 @@
-<div>
+<div id="brands_view_<?php echo $brand['Brand']['id'] ?>">
 	<div class="toolbar">
 		<h1><?php echo $brand['Brand']['name'] ?></h1>
 		<a class="back" href="#">Back</a>
+		<a class="button" href="#home">Home</a>
 	</div>
 	<ul class="rounded">
 		<li>
@@ -9,7 +10,7 @@
 			<span class="val"><?php echo $brand['Brand']['name'] ?></span>
 		</li>
 		<li class="arrow">
-			<a href="<?php echo $brand['Brewer']['url'] ?>.jqt">Brewer
+			<a href="#brewers_view" data-url="<?php echo $brand['Brewer']['url'] ?>.jqt">Brewer
 				<span class="val"><?php echo $brand['Brewer']['name'] ?></span>
 			</a>
 			<?php if (!$brand['Brewer']['imported']) { /*echo "<small>import</small>";*/ } ?>
@@ -30,9 +31,9 @@
 	<ul class="rounded">
 		<?php foreach($brand['Price'] as $price) { ?>
 			<li>
-				<small>$<?php echo number_format($price['amount'], 2) ?></small>
 				<span class="name"><?php echo $price['Package']['name'] ?></span>
 				<span class="val">$<?php echo number_format($price['price_per_litre'], 2) ?>/litre</span>
+				<small class="counter">$<?php echo number_format($price['amount'], 2) ?></small>
 			</li>
 		<?php } ?>
 

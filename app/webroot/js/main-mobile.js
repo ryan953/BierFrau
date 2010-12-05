@@ -30,5 +30,20 @@ Template = {
 
 
 $(document).ready(function() {
-
+	var cache = {};
+	$('#jqt').delegate('a[data-url]', 'tap', function(e) {
+		var url = $(this).attr('data-url'),
+		id = $(this).attr('href');
+		if (cache[url]) {
+			$(id).html(cache[url]);
+		} else {
+			$.ajax({
+				url:url,
+				success:function(data) {
+					cache[url] = $(data);
+					$(id).html(cache[url]);
+				}
+			});
+		}
+	});
 });

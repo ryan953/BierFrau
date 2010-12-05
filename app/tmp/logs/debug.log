@@ -83,3 +83,6 @@
 2010-11-17 21:12:04 Notice: Notice (8): Undefined variable: brand in [/Users/ryan953/Sites/bierfrau.com/app/views/brewers/jqt/view.ctp, line 10]
 2010-11-17 21:12:04 Notice: Notice (8): Undefined index:  Brewer in [/Users/ryan953/Sites/bierfrau.com/app/views/brewers/jqt/view.ctp, line 19]
 2010-11-17 21:12:20 Notice: Notice (8): Undefined index:  Brewer in [/Users/ryan953/Sites/bierfrau.com/app/views/brewers/jqt/view.ctp, line 19]
+2010-11-17 21:31:45 Debug: Notice (8): Undefined index: url in [C:\Users\Ryan Albrecht\Sites\bierfrau.com\app\views\brewers\jqt\view.ctp, line 19]
+2010-11-17 21:40:30 Debug: Notice (8): Undefined variable: brewer in [C:\Users\Ryan Albrecht\Sites\bierfrau.com\app\views\brands\jqt\view.ctp, line 1]
+2010-11-17 21:40:34 Debug: Notice (8): Undefined variable: brewer in [C:\Users\Ryan Albrecht\Sites\bierfrau.com\app\views\brands\jqt\view.ctp, line 1]

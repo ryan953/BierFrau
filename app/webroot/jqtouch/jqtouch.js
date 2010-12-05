@@ -354,7 +354,7 @@
 						  $node.attr('id', 'page-' + (++newPageCount));
 					 }
 
-				  $body.trigger('pageInserted', {page: $node.appendTo($body)});
+					 $body.trigger('pageInserted', {page: $node.appendTo($body)});
 
 					 if ($node.hasClass('current') || !targetPage) {
 						  targetPage = $node;

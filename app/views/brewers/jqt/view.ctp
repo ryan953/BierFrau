@@ -1,7 +1,8 @@
-<div>
+<div id="brewers_view_<?php echo $brewer['Brewer']['id'] ?>">
 	<div class="toolbar">
 		<h1><?php echo $brewer['Brewer']['name'] ?></h1>
 		<a class="back" href="#">Back</a>
+		<a class="button" href="#home">Home</a>
 	</div>
 	<ul class="rounded">
 		<li>
@@ -14,12 +15,12 @@
 	<h2>Brands</h2>
 	<ul class="rounded">
 		<?php foreach($brewer['Brand'] as $brand) { ?>
-			<li>
-				<small><?php echo $brand['percent'] ?>%</small>
-				<a href="<?php echo $brand['url'] ?>.jqt">
-					<span class="name"><?php echo $brand['name'] ?></span>
+			<li class="arrow">
+
+				<a href="#brands_view" data-url="/brands/view/<?php echo $brand['id'] ?>.jqt"><?php echo $brand['name'] ?>
+					<span class="val"><?php echo $brand['Type']['name'] ?></span>
 				</a>
-				<span class="val"><?php echo $brand['Type']['name'] ?></span>
+				<small class="counter"><?php echo $brand['percent'] ?>%</small>
 			</li>
 		<?php } ?>
 	</ul>

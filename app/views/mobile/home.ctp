@@ -21,6 +21,9 @@
 	</ul>
 </div>
 
+<div id="brewers_view"></div>
+<div id="brands_view"></div>
+
 <div id="about" class="selectable">
 	<!--<p><img src="jqtouch.png" /></p>-->
 	<p>
@@ -51,3 +54,53 @@
 	<p><br /><br /><a href="#" class="grayButton goback">Close</a></p>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/html" id="brewer_view_tmpl">
+<div id="brewers_view_{Brewer.id}">
+		<div class="toolbar">
+			<h1>{Brewer.name}</h1>
+			<a class="back" href="#">Back</a>
+		</div>
+		<ul class="rounded">
+			<li>
+				<span class="name">Name</span>
+				<span class="val">{Brewer.name}</span>
+				<!--<small>{Brewer.imported}</small>-->
+			</li>
+		</ul>
+
+		<h2>Brands</h2>
+		<ul class="rounded">
+			{list_brands}
+		</ul>
+	</div>
+</script>
+
+<script type="text/html" id="brewer_view_brands_tmpl">
+	<li class="arrow">
+		<small>{percent}%</small>
+		<a href="/brands/view/{id}.json">{name}
+			<span class="val">{Type.name}</span>
+		</a>
+	</li>
+</script>
