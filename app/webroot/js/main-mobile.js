@@ -36,6 +36,7 @@ Template = {
 			if ( store.get(url) ) {
 				$(id).html( store.get(url) );
 			} else {
+				$(id).html('<div class="progress">Loading...</div>');
 				$.ajax({
 					url:url,
 					success:function(data) {
@@ -127,6 +128,10 @@ Template = {
 
 $(document).ready(function() {
 	var store = getStore();
-	$('#jqt').jqtload(store);
+	$('#jqt').jqtload(store)
+		.delegate('.clearcache', 'tap', function() {
+			console.debug('clear cache');
+			store.clear();
+		});
 
 });

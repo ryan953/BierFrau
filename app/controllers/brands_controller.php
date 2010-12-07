@@ -21,7 +21,7 @@ class BrandsController extends AppController {
 		$this->set('brand',
 			$this->Brand->find('first',
 				array(
-					'contain'=>array('Price'=>array('Package'=>array('Container'), 'Location'), 'Brewer'),
+					'contain'=>array('Price'=>array('Package'=>array('Container'), 'Location'), 'Type', 'Brewer'),
 					'conditions'=>array('Brand.id'=>$id)
 				)
 			)

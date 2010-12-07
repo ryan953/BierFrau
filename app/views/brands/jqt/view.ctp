@@ -10,6 +10,10 @@
 			<span class="val"><?php echo $brand['Brand']['name'] ?></span>
 		</li>
 		<li class="arrow">
+			<span class="name">Type</span>
+			<span class="val"><?php echo $brand['Type']['name'] ?></span>
+		</li>
+		<li class="arrow">
 			<a href="#brewers_view" data-url="<?php echo $brand['Brewer']['url'] ?>.jqt">Brewer
 				<span class="val"><?php echo $brand['Brewer']['name'] ?></span>
 			</a>

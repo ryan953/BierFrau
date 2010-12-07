@@ -38,8 +38,8 @@
 	</p>
 	<p>
 		The site is developed and maintained
-		by <a href="//ryanalbrecht.ca">Ryan Albrecht</a>, a nice German (heritage) guy,
-		and <a href="//noxdineen.com">Nox Dineen</a>, a bonny Irish (heritage) lass.
+		by <a href="//ryanalbrecht.ca">Ryan Albrecht</a>, a nice German guy,
+		and <a href="//noxdineen.com">Nox Dineen</a>, a bonny Irish lass.
 		As you can imagine, a pair like that quickly discovered the value
 		in efficiently purchasing large quantities of beer.
 	</p>
@@ -53,6 +53,11 @@
 		bierfrau.com is made possible with the wonderful <a href="http://www.jqtouch.com/" target="_blank">jQTouch</a>
 	</p>
 	<p><br /><br /><a href="#" class="grayButton goback">Close</a></p>
+
+	<ul class="individual">
+		<li><a href="mailto:ryan@bierfrau.com" target="_blank">Email</a></li>
+		<li><a href="#" class="clearcache">Clear Cache</a></li>
+	</ul>
 </div>
 
 
