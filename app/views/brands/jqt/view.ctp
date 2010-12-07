@@ -19,6 +19,11 @@
 			</a>
 			<?php if (!$brand['Brewer']['imported']) { /*echo "<small>import</small>";*/ } ?>
 		</li>
+		<li class="arrow">
+			<a href="#brands_view" data-url="/brands/type/<?php echo $brand['Type']['id'] ?>.jqt">Type
+				<span class="val"><?php echo $brand['Type']['name'] ?></span>
+			</a>
+		</li>
 		<li>
 			<span class="name">Percent</span>
 			<span class="val"><?php echo $brand['Brand']['percent'] ?>%</span>

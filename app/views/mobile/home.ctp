@@ -6,19 +6,19 @@
 
 	<h2>Browse Beers</h2>
 	<ul class="rounded">
-		<!--<li class="arrow"><a href="/brewers">Brewers</a> <small class="counter">4</small></li>-->
-
 		<li class="arrow"><a href="/brands/top10.jqt">Top 10 Brands</a></li>
+		<li class="arrow"><a href="/brands/random.jqt">Random Brand</a></li>
+		<!--<li class="arrow"><a href="/brands/onsale.jqt">On Sale Now</a></li>-->
+	</ul>
+	<ul class="rounded">
+		<!--<li class="arrow"><a href="/prices/ranges.json">Price Ranges</a></li>-->
+		<li class="arrow"><a href="/types.jqt">Beer Types</a></li>
+		<!--<li class="arrow"><a href="/packages/common.jqt">Common Packages</a></li>-->
+		<!--<li class="arrow"><a href="/locations.jqt">Country Of Origin</a></li>-->
+	</ul>
+	<ul class="rounded">
 		<li class="arrow"><a href="/brands.jqt">All Brand Names</a></li>
-		<li class="arrow"><a href="/brewers.jqt">Brewers</a></li>
-
-		<!--<li class="arrow"><a href="/brands/view/4.jqt">Antigravity</a></li>-->
-
-		<!--<li class="arrow"><a href="/types.jqt">Beer Types</a></li>
-		<li class="arrow"><a href="/locations.jqt">Location</a></li>
-		<li class="arrow"><a href="/packages/common.jqt">Common Packages</a></li>
-
-		<li class="arrow"><a href="/prices/ranges.json">Price Ranges</a></li>-->
+		<li class="arrow"><a href="/brewers.jqt">All Brewers</a></li>
 	</ul>
 </div>
 
