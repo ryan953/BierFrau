@@ -125,7 +125,6 @@ Template = {
 	}
 })();
 
-
 $(document).ready(function() {
 	var store = getStore();
 	$('#jqt').jqtload(store)

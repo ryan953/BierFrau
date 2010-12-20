@@ -1,0 +1,11 @@
+.left { float:left; }
+.inline { display:inline; }
+
+/*
+.label { display:inline-block; width:15%; }
+.value { display:inline-block; }
+*/
+
+.ui-icon-home {
+	background-image:url('/img/House-Icon.png');
+}

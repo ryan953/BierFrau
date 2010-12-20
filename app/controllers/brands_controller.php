@@ -11,35 +11,6 @@ class BrandsController extends AppController {
 		);
 	}
 
-	function top10() {
-		$this->set('brands',
-			$this->Brand->findTop10()
-		);
-	}
-
-	function random() {
-		$this->set('brand',
-			$this->Brand->find('first',
-				array(
-					'contain'=>array('Price'=>array('Package'=>array('Container'), 'Location'), 'Brewer', 'Type'),
-					'order'=>'rand()'
-				)
-			)
-		);
-		$this->render('view');
-	}
-
-	function view($id) {
-		$this->set('brand',
-			$this->Brand->find('first',
-				array(
-					'contain'=>array('Price'=>array('Package'=>array('Container'), 'Location'), 'Brewer', 'Type'),
-					'conditions'=>array('Brand.id'=>$id)
-				)
-			)
-		);
-	}
-
 	function type($type_id) {
 		$this->set('brands',
 			$this->Brand->find('all',
@@ -52,6 +23,34 @@ class BrandsController extends AppController {
 		$this->render('index');
 	}
 
+	function top10() {
+		$this->set('brands',
+			$this->Brand->findTop10()
+		);
+		//uses a similar view to index, just without headings
+	}
 
+
+	function view($id) {
+		$this->set('brand',
+			$this->Brand->find('first',
+				array(
+					'contain'=>array('Price'=>array('Package'=>array('Container'), 'Location'), 'Brewer', 'Type'),
+					'conditions'=>array('Brand.id'=>$id)
+				)
+			)
+		);
+	}
+	function random() {
+		$this->set('brand',
+			$this->Brand->find('first',
+				array(
+					'contain'=>array('Price'=>array('Package'=>array('Container'), 'Location'), 'Brewer', 'Type'),
+					'order'=>'rand()'
+				)
+			)
+		);
+		$this->render('view');
+	}
 }
 ?>

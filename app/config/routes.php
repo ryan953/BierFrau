@@ -28,7 +28,7 @@
  */
 
 
-	Router::parseExtensions('json', 'jqt');
+	Router::parseExtensions('json', 'jqt', 'jqm');
 /*
 	Router::connect('/',
 		array('controller' => 'pages', 'action' => 'display', 'calculator')

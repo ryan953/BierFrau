@@ -26,9 +26,9 @@
 				]
 			});
 		</script>
-		<script src="/js/main-mobile.js" type="text/javascript"></script>
+		<script src="/js/mobile_jqt.js" type="text/javascript"></script>
 
-		<link href="/css/main-mobile.css" rel="stylesheet" type="text/css">
+		<link href="/css/mobile_jqt.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<div id="jqt">

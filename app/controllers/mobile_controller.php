@@ -4,7 +4,9 @@ class MobileController extends AppController {
 	var $uses = array();
 
 	function home() {
-		$this->layout = 'jqtouch';
+		//$this->layout = 'jqtouch';
+		$this->layout = 'jqmobile';
+		$this->render('jqm/home');
 	}
 }
 ?>
