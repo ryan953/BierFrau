@@ -23,6 +23,22 @@ class BrandsController extends AppController {
 		$this->render('index');
 	}
 
+	function package($package_id) {
+		$this->set('brands',
+			$this->Brand->find('all',
+				array(
+					'contain'=>array(
+						'Price'=>array(
+							'conditions'=>array('Price.package_id'=>$package_id)
+						)
+					),
+					'order'=>'name ASC'
+				)
+			)
+		);
+		$this->render('index');
+	}
+
 	function top10() {
 		$this->set('brands',
 			$this->Brand->findTop10()

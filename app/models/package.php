@@ -20,7 +20,7 @@ class Package extends AppModel {
 				$val['volume'] = $val['Container']['volume_litre'] * $val['quantity'];
 			}
 			if (isset($val[$this->name]['id'])) {
-				$val[$this->name]['url'] = "/packages/type/{$val[$this->name]['id']}";
+				$val[$this->name]['url'] = "/brands/package/{$val[$this->name]['id']}";
 			}
 
 			$results[$key] = $val;
