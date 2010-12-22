@@ -37,7 +37,7 @@
 
 </div><!-- /page -->
 
-<div data-role="page" id="logo">
+<div data-role="page" id="logo">z
 	<div data-role="content">
 		<img src="/img/bierfrau.png"/>
 	</div>
@@ -45,7 +45,7 @@
 
 <div data-role="page" data-theme="b" id="about">
 	<div data-role="content">
-		<h2>Bierfrau.com</h2>
+		<h2>BierFrau.com</h2>
 		<p>
 			BierFrau is a price calculator designed to help you get the most beer
 			for your buck. You can compare the cost per litre for various size
@@ -56,7 +56,8 @@
 			by <a href="http://ryanalbrecht.ca">Ryan Albrecht</a>, a nice German guy,
 			and <a href="http://noxdineen.com">Nox Dineen</a>, a bonny Irish lass.
 			As you can imagine, a pair like that quickly discovered the value
-			in efficiently purchasing large quantities of beer.
+			in efficiently purchasing large quantities of beer. The BeerFrau girl was
+			expertly sketched by <a href="http://www.steveschoger.com/">Steve Schoger</a>.
 		</p>
 		<p>
 			Currently the site contains price data for Ontario's
