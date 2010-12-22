@@ -53,6 +53,12 @@
 Router::connect('/',
 	array('controller' => 'mobile', 'action' => 'home')
 );
+/*Router::connect('/offline',
+	array('controller' => 'mobile', 'action' => 'offline')
+);
+Router::connect('/cache.manifest',
+	array('controller' => 'mobile', 'action' => 'cache_manifest')
+);*/
 
 /**
  * ...and connect the rest of 'Pages' controller's urls.

@@ -8,5 +8,15 @@ class MobileController extends AppController {
 		$this->layout = 'jqmobile';
 		$this->render('jqm/home');
 	}
+
+	/*function cache_manifest() {
+		$this->layout = 'cache_manifest';
+		$this->render('jqm/cache_manifest');
+	}
+
+	function offline() {
+		$this->layout = 'jqmobile';
+		$this->render('jqm/offline');
+	}*/
 }
 ?>
