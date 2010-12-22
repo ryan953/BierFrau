@@ -9,3 +9,16 @@
 .ui-icon-home {
 	background-image:url('/img/House-Icon.png');
 }
+
+
+#about .ui-content {
+	background: transparent url('/img/bierfrau_sketch.png') no-repeat 0 0;
+}
+/*
+.ui-btn-up-c {
+	background:transparent;
+background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,
+	rgba(253, 253, 253, .9)),
+	color-stop(1,rgba(238, 238, 238, .9)));
+}
+*/

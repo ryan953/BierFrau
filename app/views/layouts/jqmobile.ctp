@@ -11,6 +11,17 @@
 		<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
 
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+		<!--
+		114 for retna display
+		72 on ipad
+		57 on iphone
+		-->
+		<link rel="apple-touch-icon-precomposed" href="/img/bierfrau_appicon.png"/>
+		<link rel="apple-touch-startup-image" href="/img/bierfrau_sketch.png"/>
+
 		<script type="text/javascript">
 		  var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', 'UA-17878465-1']);
