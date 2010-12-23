@@ -119,7 +119,7 @@ foreach ($beers as $name=>$val) {
 			$package_id = mysql_insert_id();
 		}
 
-		mysql_query("INSERT INTO prices (amount, brand_id, package_id, location_id) VALUES ({$price['price']}, {$beer_id}, {$package_id}, 1)");
+		mysql_query("INSERT INTO prices (amount, brand_id, package_id, location_id, timestamp) VALUES ({$price['price']}, {$beer_id}, {$package_id}, 1, UNIX_TIMESTAMP())");
 	}
 
 	$count = count($val['prices']);
