@@ -37,12 +37,6 @@
 
 </div><!-- /page -->
 
-<div data-role="page" id="logo">z
-	<div data-role="content">
-		<img src="/img/bierfrau.png"/>
-	</div>
-</div>
-
 <div data-role="page" data-theme="b" id="about">
 	<div data-role="content">
 		<h2>BierFrau.com</h2>

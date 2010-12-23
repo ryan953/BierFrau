@@ -10,10 +10,6 @@
 				<p class="label">Name</p>
 			</li>
 			<li>
-				<h5 class="value"><?php echo $brand['Type']['name'] ?></h5>
-				<p class="label">Type</p>
-			</li>
-			<li>
 				<a href="<?php echo $brand['Brewer']['url'] ?>.jqm">
 					<h5 class="value"><?php echo $brand['Brewer']['name'] ?></h5>
 					<p class="label">Brewer</p>
@@ -40,7 +36,7 @@
 
 		<h2>Prices</h2>
 		<ul data-role="listview" data-inset="true">
-			<?php foreach($brand['Price'] as $price) { ?>
+			<?php foreach($brand['Currentprice'] as $price) { ?>
 				<li>
 					<span class="ui-li-count">$<?php echo number_format($price['price_per_litre'], 2) ?> / L</span>
 					<h5><?php echo $price['Package']['name'] ?></h5>

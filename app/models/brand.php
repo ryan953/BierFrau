@@ -9,7 +9,7 @@ class Brand extends AppModel {
 	var $hasOne = array();
 
 	var $hasMany = array(
-		'Price'
+		'Price', 'Currentprice'
 	);
 
 	/*var $validate = array(

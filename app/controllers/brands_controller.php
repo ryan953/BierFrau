@@ -51,7 +51,13 @@ class BrandsController extends AppController {
 		$this->set('brand',
 			$this->Brand->find('first',
 				array(
-					'contain'=>array('Price'=>array('Package'=>array('Container'), 'Location'), 'Brewer', 'Type'),
+					'contain'=>array(
+						'Currentprice'=>array(
+							'Package'=>array('Container'),
+							'Location'),
+						'Brewer',
+						'Type'
+					),
 					'conditions'=>array('Brand.id'=>$id)
 				)
 			)
@@ -61,7 +67,13 @@ class BrandsController extends AppController {
 		$this->set('brand',
 			$this->Brand->find('first',
 				array(
-					'contain'=>array('Price'=>array('Package'=>array('Container'), 'Location'), 'Brewer', 'Type'),
+					'contain'=>array(
+						'Currentprice'=>array(
+							'Package'=>array('Container'),
+							'Location'),
+						'Brewer',
+						'Type'
+					),
 					'order'=>'rand()'
 				)
 			)
