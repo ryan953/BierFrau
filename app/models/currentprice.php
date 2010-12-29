@@ -12,14 +12,14 @@ class Currentprice extends AppModel {
 
 	function afterFind($results, $primary) {
 		foreach($results as $key=>$val) {
-			foreach($val['Currentprice'] as $k2=>$price) {
+			foreach($val[$this->name] as $k2=>$price) {
 
 				if (isset($price['Package']) && isset($price['Package']['volume']) &&
 					isset($price['amount'])) {
 					$price['price_per_litre'] = $price['amount'] / $price['Package']['volume'];
 				}
 
-				$results[$key]['Currentprice'][$k2] = $price;
+				$results[$key][$this->name][$k2] = $price;
 			}
 		}
 		return $results;
