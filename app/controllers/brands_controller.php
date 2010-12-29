@@ -3,6 +3,18 @@ class BrandsController extends AppController {
 	var $name = 'Brands';
 	var $scaffold = 'admin';
 
+	function beforeFilter() {
+		parent::beforeFilter();
+		switch ($this->action) {
+		case 'top10':
+		case 'package':
+		case 'type':
+		case 'random':
+			$this->ServerResponse->setMethodType('view');
+			break;
+		}
+	}
+
 	function index() {
 		$this->set('brands',
 			$this->Brand->find('all',
@@ -47,7 +59,9 @@ class BrandsController extends AppController {
 	}
 
 
-	function view($id) {
+	function view($id = null) {
+		if (is_null($id)) { $id = $this->params['id']; }
+
 		$this->set('brand',
 			$this->Brand->find('first',
 				array(

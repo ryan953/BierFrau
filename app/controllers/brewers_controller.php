@@ -15,7 +15,9 @@ class BrewersController extends AppController {
 		);
 	}
 
-	function view($id) {
+	function view($id = null) {
+		if (is_null($id)) { $id = $this->params['id']; }
+
 		$this->set('brewer',
 			$this->Brewer->find('first',
 				array(
