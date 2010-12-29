@@ -66,3 +66,14 @@ Router::connect('/cache.manifest',
 	Router::connect('/pages/*',
 		array('controller' => 'pages', 'action' => 'display')
 	);
+
+
+/**
+ * API routes
+ */
+
+Router::connect('/:controller/:id',
+	array('action' => 'view'),
+	array('id'=>'[0-9]+')
+);
+

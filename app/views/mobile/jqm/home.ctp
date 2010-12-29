@@ -63,12 +63,68 @@
 			<div class="ui-block-a">
 				<a href="mailto:ryan@bierfrau.com" data-role="button" data-theme="b">Email Us</a>
 			</div>
-			<div class="ui-block-b">
+			<!--<div class="ui-block-b">
 				<a href="#home" data-role="button" class="clearcache">Clear Cache</a>
+			</div>
+			-->
+			<div class="ui-block-b">
+				<a href="#api" data-role="button">API</a>
 			</div>
 		</div><!-- /grid-a -->
 
 		<a href="#home" data-role="button" data-transition="pop" data-theme="a" data-icon="delete" data-iconpos="right">Close</a>
+
+	</div><!-- end @page -->
+</div>
+
+
+<div data-role="page" data-theme="a" id="api">
+	<div data-role="header" data-nobackbtn="true">
+		<h1>API</h1>
+		<a href="#about" class="ui-btn-right" data-transition="pop" data-icon="home">Home</a>
+	</div><!-- /header -->
+	<div data-role="content">
+		<p>
+			Any of the following url's can be queryied with an optional <code><span>callback</span></code> query string parameter for use with jsonp and ajax.
+		</p>
+		<ul data-role="listview" data-theme="c" data-dividertheme="d" class="api-route-list">
+			<?php
+			$groups = array(
+				'Brewers'=>array(
+					'/brewers.json',
+					'/brewers/<span>id</span>.json',
+				),
+				'Brands'=>array(
+					'/brands.json',
+					'/brands/top10.json',
+					'/brands/random.json',
+					'/brands/<span>id</span>.json',
+
+					'/brands/type/<span>type_id</span>.json',
+					'/brands/package/<span>package_id</span>.json',
+				),
+				'Prices'=>array(
+					'/prices.json',
+					'/prices/view/<span>id</span>.json',
+				),
+				'Packages'=>array(
+					'/packages.json',
+					'/packages/common.json',
+				),
+				'Other'=>array(
+					'/containers.json',
+					'/locations.json',
+					'/types.json',
+				)
+			);
+			foreach ($groups as $group=>$routes) {
+				echo "<li data-role='list-divider'>$group</li>";
+				foreach ($routes as $route) {
+					echo "<li><code>$route</code></li>";
+				}
+			}
+			?>
+		</ul>
 
 	</div><!-- end @page -->
 </div>

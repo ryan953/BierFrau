@@ -10,10 +10,14 @@
 	background-image:url('/img/House-Icon.png');
 }
 
-
 #about .ui-content {
 	background: transparent url('/img/bierfrau_sketch_trans.png') no-repeat 0 0;
 }
+#api p { padding-bottom:1em; }
+
+#api .api-route-list code span { color:#2489CE; font-style:italic; }
+#api .api-route-list code span:before { content:":"; }
+
 /*
 .ui-btn-up-c {
 	background:transparent;
