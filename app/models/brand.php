@@ -31,17 +31,18 @@ class Brand extends AppModel {
 	);*/
 
 	function afterFind($results, $primary) {
-		$results = ($primary ? $results : array($results));
 		foreach($results as $key=>$val) {
+
 			if (isset($val[$this->name]['id'])) {
-				$val[$this->name]['url'] = "/brands/view/{$val[$this->name]['id']}";
+				$val[$this->name]['url'] = "/brands/{$val[$this->name]['id']}";
 			}
 			if (isset($val[$this->name]['name'])) {
 				$val[$this->name]['name'] = ucwords($val[$this->name]['name']);
 			}
+
 			$results[$key] = $val;
 		}
-		return ($primary ? $results : $results[0]);
+		return $results;
 	}
 
 	function findTop10() {

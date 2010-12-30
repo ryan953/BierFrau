@@ -11,14 +11,15 @@ class Type extends AppModel {
 	);
 
 	function afterFind($results, $primary) {
-		$results = ($primary ? $results : array($results));
 		foreach($results as $key=>$val) {
+
 			if (isset($val[$this->name]['id'])) {
-				$val[$this->name]['url'] = "/brands/type/{$val[$this->name]['id']}";
+				$val[$this->name]['url'] = "/types/{$val[$this->name]['id']}/brands";
 			}
+
 			$results[$key] = $val;
 		}
-		return ($primary ? $results : $results[0]);
+		return $results;
 	}
 }
 ?>

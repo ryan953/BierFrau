@@ -4,7 +4,7 @@
 		<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
 	</div>
 	<div data-role="content">
-		<ol data-role="listview" data-filter="true">
+		<ul data-role="listview" data-filter="true">
 			<?php
 			$last_letter = '0-9';
 			foreach($brewers as $item) {
@@ -15,6 +15,6 @@
 				echo "<li><a href='{$item['Brewer']['url']}.jqm'>{$item['Brewer']['name']}</a></li>\n";
 			}
 			?>
-		</ol>
+		</ul>
 	</div>
 </div>

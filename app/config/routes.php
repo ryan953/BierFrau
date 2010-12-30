@@ -77,3 +77,27 @@ Router::connect('/:controller/:id',
 	array('id'=>'[0-9]+')
 );
 
+Router::connect('/brewers/:brewer_id/brands',
+	array('controller'=>'brands', 'action'=>'index_byBrewer'),
+	array('brewer_id'=>'[0-9]+')
+);
+
+Router::connect('/packages/:package_id/prices',
+	array('controller'=>'prices', 'action'=>'index_byPackage'),
+	array('package_id'=>'[0-9]+')
+);
+Router::connect('/brands/:brand_id/prices',
+	array('controller'=>'prices', 'action'=>'index_byBrand'),
+	array('brand_id'=>'[0-9]+')
+);
+Router::connect('/brands/:brand_id/packages/:package_id/prices',
+	array('controller'=>'prices', 'action'=>'index_byBrandPackage'),
+	array('brand_id'=>'[0-9]+', 'package_id'=>'[0-9]+')
+);
+
+Router::connect('/types/:type_id/brands',
+	array('controller'=>'types', 'action'=>'index_withBrands'),
+	array('type_id'=>'[0-9]+')
+);
+
+

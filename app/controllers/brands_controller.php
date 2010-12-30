@@ -10,41 +10,38 @@ class BrandsController extends AppController {
 		case 'package':
 		case 'type':
 		case 'random':
+		case 'index_byBrewer':
+		case 'index_byType':
 			$this->ServerResponse->setMethodType('view');
 			break;
 		}
 	}
 
 	function index() {
-		$this->set('brands',
-			$this->Brand->find('all',
-				array('contain'=>false, 'order'=>'name ASC')
-			)
-		);
-	}
-
-	function type($type_id) {
+		$conditions = array();
+		if (!empty($this->params['brewer_id'])) {
+			$conditions = array('brewer_id'=>$this->params['brewer_id']);
+		}
 		$this->set('brands',
 			$this->Brand->find('all',
 				array(
-					'contain'=>false, 'order'=>'name ASC',
-					'conditions'=>array('Brand.type_id'=>$type_id)
+					'contain'=>array('Type', 'Brewer'),
+					'order'=>'Brand.name ASC',
+					'conditions'=>$conditions
 				)
 			)
 		);
-		$this->render('index');
 	}
 
-	function package($package_id) {
+	function index_byBrewer() {
+		$conditions = array('brewer_id'=>$this->params['brewer_id']);
+
 		$this->set('brands',
 			$this->Brand->find('all',
 				array(
-					'contain'=>array(
-						'Price'=>array(
-							'conditions'=>array('Price.package_id'=>$package_id)
-						)
-					),
-					'order'=>'name ASC'
+					'contain'=>array('Type'),
+					'order'=>'Brand.name ASC',
+					'conditions'=>$conditions
 				)
 			)
 		);
@@ -68,7 +65,8 @@ class BrandsController extends AppController {
 					'contain'=>array(
 						'Currentprice'=>array(
 							'Package'=>array('Container'),
-							'Location'),
+							'Location'
+						),
 						'Brewer',
 						'Type'
 					),
@@ -77,6 +75,7 @@ class BrandsController extends AppController {
 			)
 		);
 	}
+
 	function random() {
 		$this->set('brand',
 			$this->Brand->find('first',
@@ -84,7 +83,8 @@ class BrandsController extends AppController {
 					'contain'=>array(
 						'Currentprice'=>array(
 							'Package'=>array('Container'),
-							'Location'),
+							'Location'
+						),
 						'Brewer',
 						'Type'
 					),
@@ -94,5 +94,34 @@ class BrandsController extends AppController {
 		);
 		$this->render('view');
 	}
+
+
+	/*function type($type_id) {
+		$this->set('brands',
+			$this->Brand->find('all',
+				array(
+					'contain'=>false, 'order'=>'name ASC',
+					'conditions'=>array('Brand.type_id'=>$type_id)
+				)
+			)
+		);
+		$this->render('index');
+	}*/
+
+	/*function package($package_id) {
+		$this->set('brands',
+			$this->Brand->find('all',
+				array(
+					'contain'=>array(
+						'Price'=>array(
+							'conditions'=>array('Price.package_id'=>$package_id)
+						)
+					),
+					'order'=>'name ASC'
+				)
+			)
+		);
+		$this->render('index');
+	}*/
 }
 ?>

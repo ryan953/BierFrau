@@ -18,7 +18,7 @@
 class ServerResponseComponent extends Object {
 
 	public $components = array('RequestHandler');
-	
+
 	/**
 	 * Boolean property that is true when a request is of type JSON.
 	 *
@@ -30,7 +30,7 @@ class ServerResponseComponent extends Object {
 	/**
 	 * An array of status code indexes that relate to the correctly formatted
 	 * status code string.
-	 * 
+	 *
 	 * @var mixed
 	 * @access public
 	 */
@@ -47,14 +47,14 @@ class ServerResponseComponent extends Object {
 	/**
 	 * Array of valid options that can be set in the settings array passed into
 	 * the initialize method.
-	 * 
+	 *
 	 * @var array
 	 * @access protected
 	 */
 	protected $validOptions = array();
-	
+
 	/**
-	 * All data that is set to the header is stored in this array. This is the 
+	 * All data that is set to the header is stored in this array. This is the
 	 * single place where options are set and then converted to header calls
 	 * in beforeRender.
 	 *
@@ -62,57 +62,57 @@ class ServerResponseComponent extends Object {
 	 * @access protected
 	 */
 	protected $responseData = array();
-	
+
 	/**
 	 * Explicitly set this using the setter method and this code will be used
 	 * regardless of property values.
-	 * 
+	 *
 	 * @var int
 	 * @access public
 	 */
 	protected $responseCode = false;
-	
+
 	/**
 	 * A message that will be set in the response body if set to a string value.
-	 * 
+	 *
 	 * @var string
 	 * @access protected
 	 */
 	protected $responseMessage = false;
-	
+
 	/**
-	 * Set this property to the method type used in the controller. Valid 
-	 * method types are Add, Edit, Delete, View. Use View for both Index and 
+	 * Set this property to the method type used in the controller. Valid
+	 * method types are Add, Edit, Delete, View. Use View for both Index and
 	 * View methods.
-	 * 
+	 *
 	 * @var string
 	 * @access public
 	 */
 	protected $methodType = false;
-	
+
 	/**
-	 * Set this value in the controller based on the success or failure of 
-	 * the controller method. Used in combination with the $methodType to 
+	 * Set this value in the controller based on the success or failure of
+	 * the controller method. Used in combination with the $methodType to
 	 * determine responseCode unless $responseCode is set explicitly.
-	 * 
+	 *
 	 * @var bool
 	 * @access public
 	 */
 	protected $methodSuccess = true;
-	
+
 	/**
 	 * httpHeaderType
-	 * 
+	 *
 	 * @var string
 	 * @access protected
 	 */
 	protected $httpHeaderType = 'HTTP/1.1';
-	
+
 	/**
 	 * Reference to the controller using the component. Gets replaced
 	 * in each call back so that the appropriate controller is always
 	 * being used.
-	 * 
+	 *
 	 * @var mixed
 	 * @access protected
 	 */
@@ -121,7 +121,7 @@ class ServerResponseComponent extends Object {
 	/**
 	 * Apply settings set in the controllers $components array and build the default
 	 * layout and values for the responseData property.
-	 * 
+	 *
 	 * @access public
 	 * @param object &$controller
 	 * @param array $options. (default: array())
@@ -131,6 +131,7 @@ class ServerResponseComponent extends Object {
 		$this->controller = $controller;
 		$this->setOptions($settings);
 		$this->isJson = ($this->controller->params['url']['ext'] == 'json');
+		$callback = (!empty($this->controller->params['url']['callback']) ? $this->controller->params['url']['callback'] : null);
 		$this->responseData = array(
 			'controller' => $this->controller->params['controller'],
 			'action' => $this->controller->params['action'],
@@ -140,14 +141,15 @@ class ServerResponseComponent extends Object {
 			'code' => null,
 			'message' => null,
 			'success' => null,
+			'callback' => $callback,
 			'response' => null,
 			'paging' => null
 		);
 	}
-	
+
 	/**
 	 * beforeRender function.
-	 * 
+	 *
 	 * @access public
 	 * @param mixed &$controller
 	 * @return void
@@ -200,10 +202,10 @@ class ServerResponseComponent extends Object {
 			$this->render();
 		}
 	}
-	
+
 	/**
-	 * Used for setters and getters on member properties. 
-	 * 
+	 * Used for setters and getters on member properties.
+	 *
 	 * @access public
 	 * @param string $methodName
 	 * @param array $params
@@ -233,11 +235,11 @@ class ServerResponseComponent extends Object {
 			throw new Exception("Stop it, property doesn't exist: ".$name);
 		}
 	}
-	
+
 	/**
 	 * Method called at the end of the beforeRender method that will echo the
 	 * json encoded data and exit execution of the script.
-	 * 
+	 *
 	 * @access public
 	 * @return void
 	 */
@@ -248,14 +250,21 @@ class ServerResponseComponent extends Object {
 				$this->responseData['response'] = $returnData;
 			}
 		}
-		echo json_encode($this->responseData);
-		exit();		
+
+		if (!empty($this->responseData['callback'])) {
+			echo $this->responseData['callback'] . "(";
+			echo json_encode($this->responseData);
+			echo ")";
+		} else {
+			echo json_encode($this->responseData);
+		}
+		exit();
 	}
-	
+
 	/**
 	 * Method for explicitly setting the methodSuccess property and optionally
 	 * setting responseMessage property as well.
-	 * 
+	 *
 	 * @access public
 	 * @param int $success
 	 * @param string $message
@@ -271,7 +280,7 @@ class ServerResponseComponent extends Object {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * The following methods are here just so that the properties can not be explicitly
 	 * set from the controller without using the appropriate methods ($this->set() and
@@ -279,11 +288,11 @@ class ServerResponseComponent extends Object {
 	 */
 	public function setResponseData() { return; }
 	public function setReturnData() { return; }
-	
+
 	/**
 	 * Takes the settings array passed into the initialize method and
 	 * sets member properties to appropriate values.
-	 * 
+	 *
 	 * @access protected
 	 * @param array $options
 	 * @return bool
@@ -299,13 +308,13 @@ class ServerResponseComponent extends Object {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Method that automatically sets the method type (if it already isn't set) based
 	 * on the action called in the controller. The methodType is then compared to the
 	 * HTTP request type. If it does not pass the tests, then the response code is set
 	 * to 405 and the component renders preemptively.
-	 * 
+	 *
 	 * @access protected
 	 * @return void
 	 */
@@ -332,10 +341,10 @@ class ServerResponseComponent extends Object {
 			$this->render();
 		}
 	}
-	
+
 	/**
 	 * Sets both the status code and message in the responseData array
-	 * 
+	 *
 	 * @access protected
 	 * @param mixed $status
 	 * @param string $message
@@ -347,7 +356,7 @@ class ServerResponseComponent extends Object {
 		}
 		if (!$status) {
 			return false;
-		} 
+		}
 		$this->responseData['status'] = $status;
 		if (!empty($message)) {
 			$this->responseData['message'] = $message;
@@ -357,13 +366,13 @@ class ServerResponseComponent extends Object {
 	}
 
 	/**
-	 * This method is called at the beginning of the beforeRender method. 
+	 * This method is called at the beginning of the beforeRender method.
 	 * If the responseCode property was explicitly set, then this method
 	 * will use it rather than generating a response code. It will also use
-	 * the responseMessage if it was explicitly set. Otherwise it will 
-	 * generate a response code and message based on the methodType and 
+	 * the responseMessage if it was explicitly set. Otherwise it will
+	 * generate a response code and message based on the methodType and
 	 * methodSuccess properties.
-	 * 
+	 *
 	 * @access protected
 	 * @return void
 	 */

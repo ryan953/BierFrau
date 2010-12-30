@@ -8,10 +8,14 @@
 		<?php
 		foreach($packages as $item) {
 			$name = $item['Package']['name'] ? $item['Package']['name'] : 'Other';
-			$brand_count = count($item['Price']);
+			$brand_count = isset($item['Price']) ? count($item['Price']) : 0;
 			if ($brand_count > 0) {
 				echo "<li>
 					<span class='ui-li-count'>{$brand_count}</span>
+					<a href='{$item['Package']['url']}.jqm'>{$name}</a>
+				</li>\n";
+			} else {
+				echo "<li>
 					<a href='{$item['Package']['url']}.jqm'>{$name}</a>
 				</li>\n";
 			}

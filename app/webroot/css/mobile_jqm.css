@@ -15,7 +15,7 @@
 }
 #api p { padding-bottom:1em; }
 
-#api .api-route-list code span { color:#2489CE; font-style:italic; }
+#api .api-route-list code span { color:#2489CE; }
 #api .api-route-list code span:before { content:":"; }
 
 /*

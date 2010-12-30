@@ -8,12 +8,16 @@
 		<?php
 		foreach($types as $item) {
 			$name = $item['Type']['name'] ? $item['Type']['name'] : 'Other';
-			$brand_count = count($item['Brand']);
+			$brand_count = isset($item['Brand']) ? count($item['Brand']) : 0;
 			if ($brand_count > 0) {
 				echo "<li>
 					<span class='ui-li-count'>{$brand_count}</span>
 					<a href='{$item['Type']['url']}.jqm'>{$name}</a>
 				</li>\n";
+			} else {
+				echo "<li>
+						<a href='{$item['Type']['url']}.jqm'>{$name}</a>
+					</li>\n";
 			}
 		}
 		?>

@@ -81,41 +81,53 @@
 <div data-role="page" data-theme="a" id="api">
 	<div data-role="header" data-nobackbtn="true">
 		<h1>API</h1>
-		<a href="#about" class="ui-btn-right" data-transition="pop" data-icon="home">Home</a>
+		<a href="#home" class="ui-btn-right" data-icon="home">Home</a>
 	</div><!-- /header -->
 	<div data-role="content">
 		<p>
 			Any of the following url's can be queryied with an optional <code><span>callback</span></code> query string parameter for use with jsonp and ajax.
 		</p>
-		<ul data-role="listview" data-theme="c" data-dividertheme="d" class="api-route-list">
+		<ul data-role="listview" data-theme="d" data-dividertheme="d" class="api-route-list" data-inset="true">
 			<?php
 			$groups = array(
 				'Brewers'=>array(
-					'/brewers.json',
-					'/brewers/<span>id</span>.json',
+					'/brewers.json', //list all brewers
+					'/brewers/<span>id</span>.json', //view a specific brewer
+					'/brewers/<span>id</span>/brands.json' //view the brands of a brewer
 				),
 				'Brands'=>array(
-					'/brands.json',
-					'/brands/top10.json',
-					'/brands/random.json',
-					'/brands/<span>id</span>.json',
+					'/brands.json', //all brands (long list)
+					'/brands/top10.json', //top 10 brands
+					'/brands/random.json', //view single random
+					'/brands/<span>id</span>.json', //view specific random
+					'/brands/<span>id</span>/prices.json', //view current prices for available packages
+					'/brands/<span>id</span>/packages/<span>id</span>/prices.json', //view all prices for this (historical too)
 
-					'/brands/type/<span>type_id</span>.json',
-					'/brands/package/<span>package_id</span>.json',
+					#'/brands/type/<span>type_id</span>.json',
+					#'/brands/package/<span>package_id</span>.json',
 				),
-				'Prices'=>array(
+				/*'Prices'=>array(
 					'/prices.json',
-					'/prices/view/<span>id</span>.json',
-				),
+					'/prices/view/<span>brand_id</span>.json',
+				),*/
 				'Packages'=>array(
-					'/packages.json',
-					'/packages/common.json',
+					'/packages.json', //all packages in the db ?
+					'/packages/common.json', //all common packages ?
+					'/packages/<span>id</span>/prices.json'
+				),
+				'Types'=>array(
+					'/types.json', //view a list of the types
+					'/types/<span>id</span>/brands.json', //a list of brands with this type
+				),
+				/*'Location'=>array(
+					'/locations.json', //list of stores in the db
+					'/locations/<span>id</span>/brands.json', //list of brands in a location
+					'/locations/<span>id</span>/brewers.json', //list of brewers in a location
+					'/locations/<span>id</span>/types.json', //list of types in a location
 				),
 				'Other'=>array(
 					'/containers.json',
-					'/locations.json',
-					'/types.json',
-				)
+				)*/
 			);
 			foreach ($groups as $group=>$routes) {
 				echo "<li data-role='list-divider'>$group</li>";

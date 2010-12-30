@@ -11,18 +11,27 @@ class Container extends AppModel {
 	);
 
 	function afterFind($results, $primary) {
-		$results = ($primary ? $results : array($results));
 		foreach($results as $key=>$val) {
-			if (isset($val['volume_unit']) && isset($val['volume_amount'])) {
-				$val['volume_litre'] = $this->getVolumeInLitres(
-					$val['volume_unit'],
-					$val['volume_amount']
+
+			if (isset($val[$this->name]['volume_unit']) && isset($val[$this->name]['volume_amount'])) {
+				$val[$this->name]['volume_litre'] = $this->getVolumeInLitres(
+					$val[$this->name]['volume_unit'],
+					$val[$this->name]['volume_amount']
 				);
 			}
 
 			$results[$key] = $val;
 		}
-		return ($primary ? $results : $results[0]); //return $results;
+
+		if (!$primary) {
+			if (isset($results['volume_unit']) && isset($results['volume_amount'])) {
+				$results['volume_litre'] = $this->getVolumeInLitres(
+					$results['volume_unit'], $results['volume_amount']
+				);
+			}
+		}
+
+		return $results;
 	}
 
 	function getVolumeInLitres($unit, $volume) {

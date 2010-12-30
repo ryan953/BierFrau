@@ -13,19 +13,30 @@ class Package extends AppModel {
 	);
 
 	function afterFind($results, $primary) {
-		$results = ($primary ? $results : array($results));
 		foreach($results as $key=>$val) {
-			if (isset($val['Container']) && isset($val['Container']['volume_litre']) &&
-				isset($val['quantity'])) {
-				$val['volume'] = $val['Container']['volume_litre'] * $val['quantity'];
+
+			if (isset($val['Container']) &&
+			isset($val['Container']['volume_litre']) &&
+			isset($val[$this->name]['quantity'])) {
+				$val[$this->name]['volume'] = $val['Container']['volume_litre'] * $val[$this->name]['quantity'];
 			}
+
 			if (isset($val[$this->name]['id'])) {
-				$val[$this->name]['url'] = "/brands/package/{$val[$this->name]['id']}";
+				$val[$this->name]['url'] = "/packages/{$val[$this->name]['id']}/prices";
 			}
 
 			$results[$key] = $val;
 		}
-		return ($primary ? $results : $results[0]);
+
+		if (!$primary) {
+			if (isset($results['Container']) &&
+			isset($results['Container']['volume_litre']) &&
+			isset($results['quantity'])) {
+				$results['volume'] = $results['Container']['volume_litre'] * $results['quantity'];
+			}
+		}
+
+		return $results;
 	}
 
 	function findCommon() {
@@ -42,8 +53,8 @@ class Package extends AppModel {
 			24  // 12 Cans (473ml)
 		);
 		$records = $this->find('all', array(
-			'contain'=>'Price',
-			'conditions'=>array('id'=>$top_10)
+			'contain'=>array('Container'),
+			'conditions'=>array('Package.id'=>$top_10)
 		) );
 
 		foreach ($records as $key=>$val) {
