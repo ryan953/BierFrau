@@ -7,9 +7,6 @@ class BrandsController extends AppController {
 		parent::beforeFilter();
 		switch ($this->action) {
 		case 'top10':
-		case 'package':
-		case 'type':
-		case 'random':
 		case 'index_byBrewer':
 		case 'index_byType':
 			$this->ServerResponse->setMethodType('view');
@@ -77,22 +74,11 @@ class BrandsController extends AppController {
 	}
 
 	function random() {
-		$this->set('brand',
-			$this->Brand->find('first',
-				array(
-					'contain'=>array(
-						'Currentprice'=>array(
-							'Package'=>array('Container'),
-							'Location'
-						),
-						'Brewer',
-						'Type'
-					),
-					'order'=>'rand()'
-				)
-			)
-		);
-		$this->render('view');
+		$rand_id = rand(1, $this->Brand->find('count'));
+		$this->redirect( array(
+			'action'=>'view',
+			$rand_id . '.' . $this->params['url']['ext']
+		), 303 );
 	}
 
 
