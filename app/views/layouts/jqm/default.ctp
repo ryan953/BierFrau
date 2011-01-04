@@ -6,3 +6,6 @@ header('Cache-Controle: no-store, no-cache, max-age=0, must-revalidate');
 //$this->header("X-JSON: {$content_for_layout}"); //there is a limit tot he amount of data allowed in a header
 echo $content_for_layout;
 ?>
+<script type="text/javascript">
+	_gaq.push(['_trackPageview', '<?php echo $this->here; ?>']);
+</script>
