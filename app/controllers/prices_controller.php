@@ -2,10 +2,13 @@
 class PricesController extends AppController {
 	var $name = 'Prices';
 	var $scaffold = 'admin';
+	var $uses = array('Price', 'PriceRanges');
 
 	function beforeFilter() {
 		parent::beforeFilter();
 		switch ($this->action) {
+		case 'ranges':
+		case 'index_byRange':
 		case 'index_byPackage':
 		case 'index_byBrand':
 		case 'index_byBrandPackage':
@@ -16,6 +19,29 @@ class PricesController extends AppController {
 
 	function index() {
 		$this->set('prices', $this->Price->find('all'));
+	}
+
+	function ranges() {
+		$this->set('prices',
+			$this->PriceRanges->find('all', array(
+				'fields'=>array('price_range', 'count(*) AS count'),
+				'group'=>'price_range',
+				'order'=>'price_range'
+			))
+		);
+	}
+
+	function index_byRange() {
+		$this->PriceRanges->bindModel(
+			array('belongsTo' => array('Brand') )
+		);
+		$this->set('range', $this->params['price_range']);
+		$this->set('prices',
+			$this->PriceRanges->find('all', array(
+				'contain'=>array('Brand'),
+				'conditions'=>array('price_range'=>$this->params['price_range'])
+			))
+		);
 	}
 
 	function index_byPackage() {

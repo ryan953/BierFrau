@@ -100,4 +100,9 @@ Router::connect('/types/:type_id/brands',
 	array('type_id'=>'[0-9]+')
 );
 
+Router::connect('/prices/ranges/:price_range',
+	array('controller'=>'prices', 'action'=>'index_byRange'),
+	array('price_range'=>'[0-9]+')
+);
+
 

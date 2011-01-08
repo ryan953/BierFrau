@@ -14,9 +14,7 @@
 			-->
 		</ul>
 		<ul data-role="listview" data-inset="true">
-			<!--
-			<li><a href="/prices/ranges.json">Price Ranges</a></li>
-			-->
+			<li><a href="/prices/ranges.jqm">Price Ranges</a></li>
 			<li><a href="/types.jqm">Beer Types</a></li>
 			<li><a href="/packages/common.jqm">Common Packages</a></li>
 			<!--
