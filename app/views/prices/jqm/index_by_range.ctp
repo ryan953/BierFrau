@@ -4,7 +4,7 @@
 		<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
 	</div>
 	<div data-role="content">
-		<ul data-role="listview">
+		<ul data-role="listview" data-filter="true">
 			<?php
 			foreach($prices as $item) {
 				$ppl = number_format($item['PriceRanges']['price_per_litre'], 2);
