@@ -1,6 +1,6 @@
 <div data-role="page" data-theme="b">
 	<div data-role="header">
-		<h1>Price Ranges ($<?php echo number_format($range, 2) ?>+ per litre)</h1>
+		<h1>$<?php echo number_format($range, 2) ?> to $<?php echo number_format($range+1, 2) ?> per litre</h1>
 		<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
 	</div>
 	<div data-role="content">
