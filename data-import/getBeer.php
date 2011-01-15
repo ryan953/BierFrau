@@ -8,7 +8,7 @@ include('simple_html_dom.php');
 $save_to_db = true;
 $use_local = false;
 $readDetails = false;
-$localDir = './mirrored_pages/';
+$localDir = dirname(__FILE__) . '/mirrored_pages/';
 
 $database = array(
 	'host' => 'mysql.ryan953.com',
