@@ -1,26 +1,29 @@
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?php
+$ext = 'jqm';
+/*
 <url>
 	<loc>http://www.example.com/foo.html</loc>
 	<lastmod>YYYY-MM-DDThh:mmTZD</lastmod>
 	<changefreq>always|hourly|daily|weekly|monthly|yearly|never</changefreq>
 </url>
+*/
 
-<?php
 /** Brewers **/
-echo $sitemap->url("/brewers.json");
+echo $sitemap->url("/brewers.{$ext}");
 foreach ($brewers as $item) {
-	echo $sitemap->url("/brewers/{$item['Brewers']['id']}.json");
-	echo $sitemap->url("/brewers/{$item['Brewers']['id']}/brands.json");
+	echo $sitemap->url("/brewers/{$item['Brewers']['id']}.{$ext}");
+	echo $sitemap->url("/brewers/{$item['Brewers']['id']}/brands.{$ext}");
 }
 
 
 /** Brands **/
-echo $sitemap->url("/brands.json");
-echo $sitemap->url("/brands/top10.json");
+echo $sitemap->url("/brands.{$ext}");
+echo $sitemap->url("/brands/top10.{$ext}");
 foreach ($brands as $item) {
-	echo $sitemap->url("/brands/{$item['Brands']['id']}.json");
-	echo $sitemap->url("/brands/{$item['Brands']['id']}/prices.json");
+	echo $sitemap->url("/brands/{$item['Brands']['id']}.{$ext}");
+	echo $sitemap->url("/brands/{$item['Brands']['id']}/prices.{$ext}");
 
 	/*foreach ($packages as $package) {
 		echo $sitemap->url("/brands/{$item['Brands']['id']}/packages/{$package['Packages']['id']}/prices.json");
@@ -28,16 +31,16 @@ foreach ($brands as $item) {
 }
 
 /** Packages **/
-echo $sitemap->url("/packages.json");
-echo $sitemap->url("/packages/common.json");
+echo $sitemap->url("/packages.{$ext}");
+echo $sitemap->url("/packages/common.{$ext}");
 foreach ($packages as $item) {
-	echo $sitemap->url("/packages/{$item['Packages']['id']}/prices.json");
+	echo $sitemap->url("/packages/{$item['Packages']['id']}/prices.{$ext}");
 }
 
 /** Types **/
-echo $sitemap->url("/types.json");
+echo $sitemap->url("/types.{$ext}");
 foreach ($types as $item) {
-	echo $sitemap->url("/types/{$item['Types']['id']}/brands.json");
+	echo $sitemap->url("/types/{$item['Types']['id']}/brands.{$ext}");
 }
 ?>
 </urlset>
