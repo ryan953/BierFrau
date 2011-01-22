@@ -1,13 +1,16 @@
 <?php
-class MobileController extends AppController {
-	var $name = 'Mobile';
+class SiteController extends AppController {
+	var $name = 'Site';
 	var $uses = array();
 
-	function home() {
-		//$this->layout = 'jqtouch';
-		$this->layout = 'jqmobile';
-		$this->render('jqm/home');
+	function index() {
+		//redirect based on user-agent, etc.
+		$this->redirect('/home.jqm');
 	}
+
+	function home() { /* static content */ }
+	function about() { /* static content */ }
+	function api() { /* static content */ }
 
 	function sitemap() {
 		$this->helpers[] = 'Sitemap';
@@ -23,8 +26,6 @@ class MobileController extends AppController {
 		$types = $this->Types->find('all', array('fields'=>array('id')));
 
 		$this->set(compact('brewers', 'brands', 'packages', 'types'));
-
-		$this->render('/pages/sitemap');
 	}
 
 	/*function cache_manifest() {

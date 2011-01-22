@@ -20,6 +20,10 @@ class AppController extends Controller {
 			'jqt'=>'text/html'
 		));
 
+		if ($this->RequestHandler->isAjax()) {
+			$this->layout = 'ajax';
+		}
+
 		//Load our custom config file
 		//Configure::load('calendar');
 	}

@@ -30,18 +30,21 @@
 
 Router::parseExtensions('json', 'jqt', 'jqm', 'txt', 'xml');
 
-Router::connect('/',
-	array('controller' => 'mobile', 'action' => 'home')
-);
-Router::connect('/sitemap',
-	array('controller'=>'mobile', 'action'=>'sitemap')
-);
+Router::connect('/', array('controller' => 'site', 'action' => 'index') );
+
+
+Router::connect('/home', array('controller'=>'site', 'action'=>'home') );
+Router::connect('/about', 	array('controller'=>'site', 'action'=>'about') );
+Router::connect('/api', array('controller'=>'site', 'action'=>'api') );
+
+Router::connect('/sitemap', array('controller'=>'site', 'action'=>'sitemap') );
+
 
 /*Router::connect('/offline',
-	array('controller' => 'mobile', 'action' => 'offline')
+	array('controller' => 'site', 'action' => 'offline')
 );
 Router::connect('/cache.manifest',
-	array('controller' => 'mobile', 'action' => 'cache_manifest')
+	array('controller' => 'site', 'action' => 'cache_manifest')
 );*/
 
 Router::connect('/pages/*',

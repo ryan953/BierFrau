@@ -1,7 +1,7 @@
 <div data-role="page" data-theme="b">
 	<div data-role="header">
 		<h1><?php echo $brewer['Brewer']['name'] ?></h1>
-		<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
+		<a href="/" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
 	</div>
 	<div data-role="content">
 		<ul data-role="listview" data-inset="true">
