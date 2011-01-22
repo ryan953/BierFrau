@@ -28,31 +28,15 @@
  */
 
 
-	Router::parseExtensions('json', 'jqt', 'jqm');
-/*
-	Router::connect('/',
-		array('controller' => 'pages', 'action' => 'display', 'calculator')
-	);
-	Router::connect('/about',
-		array('controller' => 'pages', 'action' => 'display', 'about')
-	);
-	Router::connect('/calc',
-		array('controller' => 'pages', 'action' => 'display', 'calculator')
-	);
-
-	Router::connect('/home',
-		array('controller' => 'brands', 'action'=>'index')
-	);
-
-	Router::connect('/beers/:slug',
-		array('controller' => 'pages', 'action' => 'display', 'browser'),
-		array('pass'=>'slug')
-	);
-*/
+Router::parseExtensions('json', 'jqt', 'jqm', 'txt', 'xml');
 
 Router::connect('/',
 	array('controller' => 'mobile', 'action' => 'home')
 );
+Router::connect('/sitemap',
+	array('controller'=>'mobile', 'action'=>'sitemap')
+);
+
 /*Router::connect('/offline',
 	array('controller' => 'mobile', 'action' => 'offline')
 );
@@ -60,12 +44,10 @@ Router::connect('/cache.manifest',
 	array('controller' => 'mobile', 'action' => 'cache_manifest')
 );*/
 
-/**
- * ...and connect the rest of 'Pages' controller's urls.
- */
-	Router::connect('/pages/*',
-		array('controller' => 'pages', 'action' => 'display')
-	);
+Router::connect('/pages/*',
+	array('controller' => 'pages', 'action' => 'display')
+);
+
 
 
 /**
@@ -104,5 +86,3 @@ Router::connect('/prices/ranges/:price_range',
 	array('controller'=>'prices', 'action'=>'index_byRange'),
 	array('price_range'=>'[0-9]+')
 );
-
-

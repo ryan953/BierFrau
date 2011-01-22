@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /css/
+Disallow: /files/
+Disallow: /img/
+Disallow: /jqtouch/
+Disallow: /js/
+Disallow: /test.php
+Allow: /
