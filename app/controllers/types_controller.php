@@ -13,6 +13,7 @@ class TypesController extends AppController {
 	}
 
 	function index() {
+		$this->set('title_for_layout', "Beer Types at Ontario's `The Beer Store`");
 		$this->set('types',
 			$this->Type->find('all',
 				array('contain'=>false)
@@ -27,15 +28,15 @@ class TypesController extends AppController {
 			$conditions = array('id'=>$this->params['type_id']);
 			$contain = array('Brand');
 		}
-		$this->set('type',
-			$this->Type->find('all',
-				array(
-					'contain'=>$contain,
-					'order'=>'Type.name ASC',
-					'conditions'=>$conditions
-				)
+		$type = $this->Type->find('first',
+			array(
+				'contain'=>$contain,
+				'order'=>'Type.name ASC',
+				'conditions'=>$conditions
 			)
 		);
+		$this->set('title_for_layout', "{$type['Type']['name']} Beers in `The Beer Store`");
+		$this->set('type', $type);
 	}
 
 }

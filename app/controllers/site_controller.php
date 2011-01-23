@@ -8,9 +8,15 @@ class SiteController extends AppController {
 		$this->redirect('/home.jqm');
 	}
 
-	function home() { /* static content */ }
-	function about() { /* static content */ }
-	function api() { /* static content */ }
+	function home() {
+		$this->set('title_for_layout', "Get more beer for your money");
+	}
+	function about() {
+		$this->set('title_for_layout', "Made by Ryan and Nox, we love our beer");
+	}
+	function api() {
+		$this->set('title_for_layout', "Get Beer Price Data in JSON format");
+	}
 
 	function sitemap() {
 		$this->helpers[] = 'Sitemap';

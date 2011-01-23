@@ -22,6 +22,7 @@ class PricesController extends AppController {
 	}
 
 	function ranges() {
+		$this->set('title_for_layout', "Price ranges for beer packages. Inexpensive Drinks!");
 		$this->set('prices',
 			$this->PriceRanges->find('all', array(
 				'fields'=>array('price_range', 'count(*) AS count'),
@@ -35,69 +36,69 @@ class PricesController extends AppController {
 		$this->PriceRanges->bindModel(
 			array('belongsTo' => array('Brand') )
 		);
+		$prices = $this->PriceRanges->find('all', array(
+			'contain'=>array('Brand'),
+			'conditions'=>array('price_range'=>$this->params['price_range'])
+		));
+		//$this->set('title_for_layout', "");
 		$this->set('range', $this->params['price_range']);
-		$this->set('prices',
-			$this->PriceRanges->find('all', array(
-				'contain'=>array('Brand'),
-				'conditions'=>array('price_range'=>$this->params['price_range'])
-			))
-		);
+		$this->set('prices', $prices);
 	}
 
 	function index_byPackage() {
-		$this->set('prices',
-			$this->Price->find('all',
-				array(
-					'contain'=>array(
-						'Package'=>array('Container'),
-						'Location'
-					),
-					'order'=>'timestamp DESC',
-					'conditions'=>array('package_id'=>$this->params['package_id'])
-				)
+		$prices = $this->Price->find('all',
+			array(
+				'contain'=>array(
+					'Package'=>array('Container'),
+					'Location'
+				),
+				'order'=>'timestamp DESC',
+				'conditions'=>array('package_id'=>$this->params['package_id'])
 			)
 		);
+		//$this->set('title_for_layout', "");
+		$this->set('prices', $prices);
 	}
 
 	function index_byBrand() {
-		$this->set('prices',
-			$this->Price->find('all',
-				array(
-					'contain'=>array(
-						'Package'=>array('Container'),
-						'Location'
-					),
-					'order'=>'timestamp DESC',
-					'conditions'=>array('brand_id'=>$this->params['brand_id'])
-				)
+		$prices = $this->Price->find('all',
+			array(
+				'contain'=>array(
+					'Package'=>array('Container'),
+					'Location'
+				),
+				'order'=>'timestamp DESC',
+				'conditions'=>array('brand_id'=>$this->params['brand_id'])
 			)
 		);
+		//$this->set('title_for_layout', "");
+		$this->set('prices', $prices);
 	}
 
 	function index_byBrandPackage() {
-		$this->set('prices',
-			$this->Price->find('all',
-				array(
-					'contain'=>array(
-						'Package'=>array('Container'),
-						'Location'
-					),
-					'order'=>'timestamp DESC',
-					'conditions'=>array(
-						'brand_id'=>$this->params['brand_id'],
-						'package_id'=>$this->params['package_id']
-					)
+		$prices = $this->Price->find('all',
+			array(
+				'contain'=>array(
+					'Package'=>array('Container'),
+					'Location'
+				),
+				'order'=>'timestamp DESC',
+				'conditions'=>array(
+					'brand_id'=>$this->params['brand_id'],
+					'package_id'=>$this->params['package_id']
 				)
 			)
 		);
+		//$this->set('title_for_layout', "");
+		$this->set('prices', $prices);
 	}
 
 	function view($id) {
-		$this->set('prices', $this->Price->find('all', array(
-				'conditions'=>array('brand_id'=>$id),
-				'contain'=>array('Package')
-			) )
-		);
+		$prices = $this->Price->find('all', array(
+			'conditions'=>array('brand_id'=>$id),
+			'contain'=>array('Package')
+		) );
+		$this->set('prices', $prices);
 	}
 }
 ?>

@@ -15,6 +15,8 @@ class BrandsController extends AppController {
 	}
 
 	function index() {
+		$this->set('title_for_layout', "Prices for all brands in Ontario's `The Beer Store`");
+
 		$conditions = array();
 		if (!empty($this->params['brewer_id'])) {
 			$conditions = array('brewer_id'=>$this->params['brewer_id']);
@@ -32,20 +34,21 @@ class BrandsController extends AppController {
 
 	function index_byBrewer() {
 		$conditions = array('brewer_id'=>$this->params['brewer_id']);
-
-		$this->set('brands',
-			$this->Brand->find('all',
-				array(
-					'contain'=>array('Type'),
-					'order'=>'Brand.name ASC',
-					'conditions'=>$conditions
-				)
+		$brands = $this->Brand->find('all',
+			array(
+				'contain'=>array('Type'),
+				'order'=>'Brand.name ASC',
+				'conditions'=>$conditions
 			)
 		);
+
+		$this->set('title_for_layout', "Prices for {$brands['Brands']['name']}");
+		$this->set('brands', $brands);
 		$this->render('index');
 	}
 
 	function top10() {
+		$this->set( 'title_for_layout', "Top 10 Beer Brands and Prices in Ontario's `The Beer Store`" );
 		$this->set('brands',
 			$this->Brand->findTop10()
 		);
@@ -56,21 +59,21 @@ class BrandsController extends AppController {
 	function view($id = null) {
 		if (is_null($id)) { $id = $this->params['id']; }
 
-		$this->set('brand',
-			$this->Brand->find('first',
-				array(
-					'contain'=>array(
-						'Currentprice'=>array(
-							'Package'=>array('Container'),
-							'Location'
-						),
-						'Brewer',
-						'Type'
+		$brand = $this->Brand->find('first',
+			array(
+				'contain'=>array(
+					'Currentprice'=>array(
+						'Package'=>array('Container'),
+						'Location'
 					),
-					'conditions'=>array('Brand.id'=>$id)
-				)
+					'Brewer',
+					'Type'
+				),
+				'conditions'=>array('Brand.id'=>$id)
 			)
 		);
+		$this->set('title_for_layout', "{$brand['Brand']['name']} Prices at `The Beer Store`");
+		$this->set('brand', $brand);
 	}
 
 	function random() {

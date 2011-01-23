@@ -1,9 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8" />
 
-		<title>Bierfrau.com - Beer Price Information</title>
+		<title><?php echo $title_for_layout ?> - Bierfrau.com</title>
 
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
 		<link href="/css/mobile_jqm.css" rel="stylesheet" type="text/css">
