@@ -28,7 +28,7 @@
  */
 
 
-Router::parseExtensions('json', 'jqt', 'jqm', 'txt', 'xml');
+Router::parseExtensions('json', 'jqm', 'txt', 'xml');
 
 Router::connect('/', array('controller' => 'site', 'action' => 'index') );
 
