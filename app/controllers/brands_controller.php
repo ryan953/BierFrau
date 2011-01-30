@@ -78,10 +78,19 @@ class BrandsController extends AppController {
 
 	function random() {
 		$rand_id = rand(1, $this->Brand->find('count'));
-		$this->redirect( array(
-			'action'=>'view',
-			$rand_id . '.' . $this->params['url']['ext']
-		), 303 );
+
+		// work around a problem with JQMobile where 302 redirects don't render properly.
+		if ($this->RequestHandler->isAjax() && $this->RequestHandler->ext == 'jqm') {
+			$this->redirect( array(
+				'action'=>'view',
+				$rand_id . '.' . $this->params['url']['ext']
+			), 200);
+		} else {
+			$this->redirect( array(
+				'action'=>'view',
+				$rand_id . '.' . $this->params['url']['ext']
+			), 302 );
+		}
 	}
 
 
