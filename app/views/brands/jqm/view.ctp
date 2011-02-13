@@ -1,14 +1,15 @@
-<div data-role="page" data-theme="b">
+<div data-role="page" data-theme="b" class="brands_view">
 	<div data-role="header">
 		<h1><?php echo $brand['Brand']['name'] ?></h1>
 		<a href="/" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
 	</div>
 	<div data-role="content">
+
+		<a class="right favorite-brand" data-role="button" data-icon="star">Like</a>
+		<a class="right unfavorite-brand" data-role="button" data-icon="minus">Unlike</a>
+		<h2><?php echo $brand['Brand']['name'] ?></h2>
+
 		<ul data-role="listview" data-inset="true">
-			<li>
-				<h5 class="value"><?php echo $brand['Brand']['name'] ?></h5>
-				<p class="label">Name</p>
-			</li>
 			<li>
 				<a href="<?php echo $brand['Brewer']['url'] ?>.jqm">
 					<h5 class="value"><?php echo $brand['Brewer']['name'] ?></h5>

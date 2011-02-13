@@ -11,6 +11,8 @@ class SiteController extends AppController {
 	function home() {
 		$this->set('title_for_layout', "Get more beer for your money");
 	}
+	function favs() { }
+
 	function about() {
 		$this->set('title_for_layout', "Made by Ryan and Nox, we love our beer");
 	}

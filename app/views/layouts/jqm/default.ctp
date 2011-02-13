@@ -6,10 +6,12 @@
 		<title><?php echo $title_for_layout ?> - Bierfrau.com</title>
 
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
-		<link href="/css/mobile_jqm.css" rel="stylesheet" type="text/css">
+		<script src="http://code.jquery.com/jquery-1.5.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
 
-		<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
-		<script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
+		<script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+
+		<link href="/css/mobile_jqm.css" rel="stylesheet" type="text/css">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -38,7 +40,10 @@
 
 		<?php echo $content_for_layout; ?>
 
+		<script src="/js/jquery.store.js" type="text/javascript"></script>
 		<script src="/js/mobile_jqm.js" type="text/javascript"></script>
+
+		<script src="/js/favorites.js" type="text/javascript"></script>
 		<?php echo $scripts_for_layout; ?>
 	</body>
 </html>

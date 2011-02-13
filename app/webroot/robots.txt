@@ -6,3 +6,5 @@ Disallow: /jqtouch/
 Disallow: /js/
 Disallow: /test.php
 Allow: /
+
+SITEMAP: http://www.bierfrau.com/sitemap.xml

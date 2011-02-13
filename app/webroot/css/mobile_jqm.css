@@ -1,3 +1,4 @@
+.right { float:right; }
 .left { float:left; }
 .inline { display:inline; }
 
@@ -5,6 +6,12 @@
 .label { display:inline-block; width:15%; }
 .value { display:inline-block; }
 */
+
+.favorite .favorite-brand { display:none; }
+.unfavorite-brand { display:none; }
+.favorite .unfavorite-brand { display:block; }
+
+h2 { margin-top:.6em; }
 
 .ui-icon-home {
 	background-image:url('/img/House-Icon.png');

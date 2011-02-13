@@ -34,6 +34,7 @@ Router::connect('/', array('controller' => 'site', 'action' => 'index') );
 
 
 Router::connect('/home', array('controller'=>'site', 'action'=>'home') );
+Router::connect('/favorites', array('controller'=>'site', 'action'=>'favs') );
 Router::connect('/about', 	array('controller'=>'site', 'action'=>'about') );
 Router::connect('/api', array('controller'=>'site', 'action'=>'api') );
 
@@ -51,6 +52,10 @@ Router::connect('/pages/*',
 	array('controller' => 'pages', 'action' => 'display')
 );
 
+
+Router::connect('/login',
+	array('controller'=>'users', 'action'=>'login')
+);
 
 
 /**
