@@ -2,7 +2,7 @@
 	var store_name = 'favorites',
 	class_name = 'favorite';
 	refresh_favs = function() {
-		var favs = store.getObj(store_name), arr = [],
+		var favs = getStore().getObj(store_name), arr = [],
 			favs_page = $('.favorites_view .ui-listview');
 		if (favs_page.length > 0) {
 			for (var url in favs) {
@@ -14,27 +14,27 @@
 
 	$('div').live('pageshow', function() {
 		var current = $('.ui-page-active.brands_view'),
-			favs = store.getObj(store_name);
+			favs = getStore().getObj(store_name);
 		if (current.attr('data-url') in favs) {
 			current.addClass(class_name);
 		}
 	});
 	$('.favorite-brand').live('tap click', function() {
 		var current = $('.ui-page-active.brands_view').addClass(class_name),
-			favs = store.getObj(store_name),
+			favs = getStore().getObj(store_name),
 			url = current.attr('data-url');
 		if (!(url in favs)) {
 			favs[url] = $('h2', current).first().html();
-			store.put(store_name, favs);
+			getStore().put(store_name, favs);
 			refresh_favs();
 		}
 	});
 	$('.unfavorite-brand').live('tap click', function() {
 		var url = $('.ui-page-active.brands_view').removeClass(class_name).attr('data-url'),
-			favs = store.getObj(store_name);
+			favs = getStore().getObj(store_name);
 		if ((url in favs)) {
 			delete favs[url];
-			store.put(store_name, favs);
+			getStore().put(store_name, favs);
 			refresh_favs();
 		}
 	});
