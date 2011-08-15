@@ -1,7 +1,8 @@
 import sys
+import copy
 import urllib2
 import hashlib
-from BeautifulSoup import BeautifulSoup
+from BeautifulSoup import BeautifulSoup, SoupStrainer
 
 settings = {
     'debugging':True,
@@ -67,6 +68,7 @@ class PageDownloader(object):
 class HTMLPage(object):
     def __init__(self, url):
         self.url = url
+        self.parseOnly = SoupStrainer('body')
     
     def __str__(self):
         return self.url
@@ -88,9 +90,13 @@ class HTMLPage(object):
             return ''
         
     def getDom(self):
-        return BeautifulSoup(self.getHtml())
+        return BeautifulSoup(self.getHtml(), parseOnlyThese=self.parseOnly)
     
 class SearchResultsPage(HTMLPage):
+    def __init__(self, url):
+        super(SearchResultsPage, self).__init__(self, url)
+        self.parseOnly = SoupStrainer('div', 'view-brands')
+    
     def getMoreInfo(self):
         debug('Traversing search DOM for brands')
         soup = self.getDom()
@@ -104,19 +110,74 @@ class SearchResultsPage(HTMLPage):
 class DetailsPage(HTMLPage):
     def getInfoTuple(self):
         soup = self.getDom()
-        #print soup
+        node = soup.find('div', 'node')
+        detail_soup = node.find('div', 'brand-details')
+        values = self.getAttrs(copy.deepcopy(detail_soup))
         return {
-            'name':self.getName(soup),
-            'desc':self.getDesc(soup)
+            'name': self.getName(detail_soup),
+            'desc': self.getDesc(detail_soup),
+            'imgSrc': self.getImageSrc(node),
+            'categories': values[0].split(','),
+            'type': values[1],
+            'styles': values[2].split(','),
+            'country': values[3],
+            'brewer': values[4],
+            'alcohol': values[5],
+            'prices': self.getPrices(node)
         }
         
-        
     def getName(self, soup):
-        return soup.h3('beer-name', text=True, limit=1)[0]
+        return soup.find('h3', 'beer-name').string
         
     def getDesc(self, soup):
-        return soup.div('beer-desc').p(text=True, limit=1)[0]
-
+        return soup.find('p').string
+    
+    def getAttrs(self, soup):
+        h3 = soup.find('h3')
+        h3.extract()
+        spans = soup.findAll('span')
+        [span.extract() for span in spans]
+        div = soup.find('div', 'beer-desc')
+        div.extract()
+        text = str(soup.renderContents().strip())
+        return [a.strip().title() for a in text.split("<br />")]
+        
+    def getImageSrc(self, node):
+        img_soup = node.find('div', 'brand-image')
+        img = img_soup.find('img')
+        return img['src']
+        
+    def getPrices(self, node):
+        prices = node.find('div', attrs={'id':'tab-prices'})
+        allTr = prices.findAll('tr')
+        rows = []
+        for tr in allTr:
+            cols = [str(col.string).strip() for col in tr.findAll('td')]
+            if len(cols):
+                rows.append({
+                    'package':self.parsePackage(cols[0]),
+                    'price':cols[1].replace('$', ''),
+                })
+        return rows
+        
+    def parseContainer(self, package):
+        parts = package.split(' ')
+        return {
+            'name':"{0} ({1}{2})".format(parts[1], parts[2], parts[3]),
+            'volume_amount':parts[2],
+            'volume_unit':parts[3]
+        }
+        
+    def parsePackage(self, package):
+        parts = package.split(' ')
+        container = self.parseContainer(package)
+        return {
+            'name':parts[0] + ' ' + container['name'],
+            #'name':parts[2],
+            'quantity':parts[0],
+            'container':container
+        }
+        
 class DataImporter(object):
     def __init__(self):
         self._searchPage = None
