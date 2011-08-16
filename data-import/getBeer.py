@@ -94,7 +94,7 @@ class HTMLPage(object):
     
 class SearchResultsPage(HTMLPage):
     def __init__(self, url):
-        super(SearchResultsPage, self).__init__(self, url)
+        super(SearchResultsPage, self).__init__(url)
         self.parseOnly = SoupStrainer('div', 'view-brands')
     
     def getMoreInfo(self):
@@ -130,7 +130,10 @@ class DetailsPage(HTMLPage):
         return soup.find('h3', 'beer-name').string
         
     def getDesc(self, soup):
-        return soup.find('p').string
+        try:
+            return soup.find('p').string
+        except:
+            return ''
     
     def getAttrs(self, soup):
         h3 = soup.find('h3')
@@ -200,12 +203,13 @@ class DataImporter(object):
         
 importer = DataImporter()
 
-#importer.getSearchPage().updateCache()
-#importer.updateCaches()
+importer.getSearchPage().updateCache()
+importer.updateCaches()
 
-#pages = importer.getDetailsPages()
-#for page in pages:
-#    print page.__str__()
+pages = importer.getDetailsPages()
+for page in pages:
+    print page.__str__()
+    print page.getInfoTuple()
 
-steamWhistle = DetailsPage('http://www.thebeerstore.ca/beers/steam-whistle')
-print steamWhistle.getInfoTuple()
+#steamWhistle = DetailsPage('http://www.thebeerstore.ca/beers/steam-whistle')
+#print steamWhistle.getInfoTuple()
