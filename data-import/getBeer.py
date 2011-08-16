@@ -97,7 +97,7 @@ class SearchResultsPage(HTMLPage):
         super(SearchResultsPage, self).__init__(url)
         self.parseOnly = SoupStrainer('div', 'view-brands')
     
-    def getMoreInfo(self):
+    def parseDom(self):
         debug('Traversing search DOM for brands')
         soup = self.getDom()
         brands = soup.findAll(attrs='node-brand')
@@ -109,6 +109,7 @@ class SearchResultsPage(HTMLPage):
     
 class DetailsPage(HTMLPage):
     def getInfoTuple(self):
+        debug('Getting Details Info Tuple')
         soup = self.getDom()
         node = soup.find('div', 'node')
         detail_soup = node.find('div', 'brand-details')
@@ -190,26 +191,16 @@ class DataImporter(object):
             self._searchPage = SearchResultsPage(settings['searchUrl'])
         return self._searchPage
         
-    def getDetailsPages(self):
-        return self.getSearchPage().getMoreInfo()
+    def listDetailsPages(self):
+        return self.getSearchPage().parseDom()
         
-    def updateCaches(self):
+    def showLatest(self):
         self.getSearchPage().updateCache()
-        pages = self.getDetailsPages()
+        pages = self.listDetailsPages()
         total = len(pages)
         for i,page in list(enumerate(pages)):
             page.updateCache()
             print "%d/%d done." % (i+1, total)
         
 importer = DataImporter()
-
-importer.getSearchPage().updateCache()
-importer.updateCaches()
-
-pages = importer.getDetailsPages()
-for page in pages:
-    print page.__str__()
-    print page.getInfoTuple()
-
-#steamWhistle = DetailsPage('http://www.thebeerstore.ca/beers/steam-whistle')
-#print steamWhistle.getInfoTuple()
+importer.showLatest()
