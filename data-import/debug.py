@@ -19,10 +19,3 @@ def log(msg = ''):
 
 	if log:
 		pp.pprint(msg)
-
-
-'''
-class Struct:
-    def __init__(self, **entries): 
-        self.__dict__.update(entries)
-'''
